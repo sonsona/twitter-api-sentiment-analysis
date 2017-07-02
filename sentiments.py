@@ -10,14 +10,14 @@ def get_tweet_sentiment(tweet_dict, weights):
         text = utf8_text 
         toks = re.split('\s+', utf8_text.lower()) #liste contenant le text decoupe selon espace#
         for word in toks:
-            word = re.sub('\W', '', word) #replacer les non alphanum avec chaine vide#
+            word = re.sub('\W', '', word) #remplacer les non alphanum avec chaine vide#
             if word in weights:
                 score += weights[word]
         score = min(6, score)
         score = max(-6, score)
         for word in toks:
             word = re.sub('\W', '', word)
-            if word not in weights and len(word) > 3:
+            if word not in weights and len(word) > 3: #si le mot n'existe pas on l'ajoute comme etant neutre#
                 weights[word] = 0
 
     return score, text
