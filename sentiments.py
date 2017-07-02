@@ -7,10 +7,10 @@ def get_tweet_sentiment(tweet_dict, weights):
     text = ""
     if u'text' in tweet_dict:
         utf8_text = tweet_dict[u'text']
-        text = utf8_text
-        toks = re.split('\s+', utf8_text.lower())
+        text = utf8_text 
+        toks = re.split('\s+', utf8_text.lower()) #liste contenant le text decoupe selon espace#
         for word in toks:
-            word = re.sub('\W', '', word)
+            word = re.sub('\W', '', word) #replacer les non alphanum avec chaine vide#
             if word in weights:
                 score += weights[word]
         score = min(6, score)
